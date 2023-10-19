@@ -37,8 +37,8 @@
     <div id="map"> </div>  // Things in div tags are sections of your website. This section is for the map.
 // The map id allows your css tag #map to apply styling. yeaaa baby.
     <div class="sidebar">
-      <h1>"hello world! Click on the polygon!"</h1>
-      <h6>- Jaz</h6>
+      <h3>"hello world! Click on the polygon!"</h3>
+      <h10>- Jaz</h10>
 
       <h2> Go to atom.io and download atom.
         Make a new folder on your computer and name it whatever. Inside this folder make three folders:
@@ -69,19 +69,19 @@
           {
             "type": "Feature",
             "properties": {
-              "popup": "Malik's land"  // You can add more fields to the properties, and grow your popups. Even weblinks.
+              "popup": "Malik's land",  // You can add more fields to the properties, and grow your popups. Even weblinks.
+              "whatsHISNAME": "Rammy malik" 
             },
             "geometry": {
               "type": "Polygon",
               "coordinates": [
-                [
                   [-75.21744088465799, 39.95251510209693],
-                  [-75.220554, 39.953677],
-                  [-75.221826, 39.951151],
-                  [-75.218712, 39.949988],
-                  [-75.215598, 39.951151],
-                  [-75.216870, 39.953677],
-                  [-75.21744088465799, 39.95251510209693]
+                  [-75.225554, 39.959677],
+                  [-75.321826, 39.951051],
+                  [-75.214712, 39.969988],
+                  [-75.266698, 39.951666],
+                  [-75.211110, 39.953697],
+                  [-75.21744088474799, 39.97305510209693]
                 ]
               ]
             }
@@ -92,7 +92,7 @@
       // Add the hexagon to the map
       L.geoJSON(malikGeoJSON, {
         style: function (feature) {
-          return { color: "blue", fillOpacity: 0.4 };
+          return { color: "green", fillOpacity: 0.7 };
         }
       }).addTo(map);
 
