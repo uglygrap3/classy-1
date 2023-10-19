@@ -62,32 +62,34 @@
 // Making a random marker.
       var marker = L.marker([39.96192, -75.22202]).addTo(map);
 
-      // A geojson
-      var malikGeoJSON = {
+
+  var malikGeoJSON = {
         "type": "FeatureCollection",
         "features": [
           {
             "type": "Feature",
             "properties": {
-              "popup": "Malik's land",  // You can add more fields to the properties, and grow your popups. Even weblinks.
-              "whatsHISNAME": "Rammy malik" 
+              "popup": "Malik's land"  // You can add more fields to the properties, and grow your popups. Even weblinks.
             },
             "geometry": {
               "type": "Polygon",
               "coordinates": [
+                [
                   [-75.21744088465799, 39.95251510209693],
-                  [-75.225554, 39.959677],
-                  [-75.321826, 39.951051],
-                  [-75.214712, 39.969988],
-                  [-75.266698, 39.951666],
-                  [-75.211110, 39.953697],
-                  [-75.21744088474799, 39.97305510209693]
+                  [-75.220554, 39.983677],
+                  [-75.221821, 39.951151],
+                  [-75.218719, 39.929988],
+                  [-75.235598, 39.958151],
+                  [-75.216970, 39.653677],
+                  [-75.21744088465799, 39.95251510209693]
                 ]
               ]
             }
           }
         ]
       };
+
+
 
       // Add the hexagon to the map
       L.geoJSON(malikGeoJSON, {
