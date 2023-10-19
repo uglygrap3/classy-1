@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
+    // Load in the leaflet API //
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+
+// Anything inbetween the style tags uses CSS. < style > </ style >
+// This is a different programming language which allows you to beautify things.
+    <style>
+      .sidebar {
+        position: absolute;
+        left: 0;
+        width: 300px;
+        top: 0;
+        bottom: 0px;
+        overflow-y: auto;
+        padding: 20px;
+        font-size: 16px;
+        border: solid;
+        background-color: #8FBC8F;
+        z-index: 2;
+      }
+
+      #map {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    </style>  // This is the end of CSS, note the end of the tag  </ >
+  </head>
+  <body>
+    <div id="map"> </div>  // Things in div tags are sections of your website. This section is for the map.
+// The map id allows your css tag #map to apply styling. yeaaa baby.
+    <div class="sidebar">
+      <h1>"hello world! Click on the polygon!"</h1>
+      <h6>- Jaz</h6>
+
+      <h2> Go to atom.io and download atom.
+        Make a new folder on your computer and name it whatever. Inside this folder make three folders:
+        "js" "css" "images". Save this index.html file in your folder named whatever. Now go make a github account
+        and save this index.html in github. </h2>
+    </div>
+
+    // The script tags is javascript.
+    <script>
+    // Thankfully we're using leaflet's library which allows us to use built in functions. Any function that
+    // starts with L.  is leaflet. The L.map function allows us to create a map.
+      var map = L.map('map').setView([39.96122, -75.22202], 15);    // This is the function to make the map.
+      L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=C2TOgWLnQlh9CigCr0lp', {
+        tileSize: 512,
+        zoomOffset: -1,
+        minZoom: 1,
+        attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+        crossOrigin: true
+      }).addTo(map);
+
+// Making a random marker.
+      var marker = L.marker([39.96192, -75.22202]).addTo(map);
+
+      // A geojson
+      var malikGeoJSON = {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "popup": "Malik's land"  // You can add more fields to the properties, and grow your popups. Even weblinks.
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [-75.21744088465799, 39.95251510209693],
+                  [-75.220554, 39.953677],
+                  [-75.221826, 39.951151],
+                  [-75.218712, 39.949988],
+                  [-75.215598, 39.951151],
+                  [-75.216870, 39.953677],
+                  [-75.21744088465799, 39.95251510209693]
+                ]
+              ]
+            }
+          }
+        ]
+      };
+
+      // Add the hexagon to the map
+      L.geoJSON(malikGeoJSON, {
+        style: function (feature) {
+          return { color: "blue", fillOpacity: 0.4 };
+        }
+      }).addTo(map);
+
+      // Enable the popup
+      L.geoJSON(malikGeoJSON, {
+        onEachFeature: function (feature, layer) {
+          if (feature.properties && feature.properties.popup) {
+            layer.bindPopup(feature.properties.popup);
+          }
+        }
+      }).addTo(map);
+    </script>
+  </body>
+</html>
